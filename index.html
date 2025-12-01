@@ -19,35 +19,40 @@
               serif: ['Playfair Display', 'serif'],
             },
             colors: {
-              'brand-dark': '#0f172a', // Slate 900
-              'brand-darker': '#020617', // Slate 950
-              'brand-gold': '#d4af37', // Metallic Gold
-              'brand-gold-light': '#f3e5ab',
-              'brand-bg': '#f8fafc', // Slate 50
-              'brand-primary': '#0f172a', // Re-mapping old primary to dark slate
-              'brand-primary-dark': '#020617',
-              'brand-secondary': '#f1f5f9',
-              'brand-accent': '#d4af37',
+              'brand-dark': '#1a1a1a', // Softer Rich Black
+              'brand-darker': '#050505', // Deep Black
+              'brand-gold': '#C4A454', // Champagne Gold (More sophisticated)
+              'brand-gold-light': '#E8D4A2',
+              'brand-bg': '#F9F8F6', // Warm Alabaster/Cream
+              'brand-bg-dark': '#0a0a0a',
+              'brand-primary': '#1a1a1a',
+              'brand-primary-dark': '#000000',
+              'brand-secondary': '#F0EFEA', // Warm Gray
+              'brand-accent': '#C4A454',
               
               // Dark mode specific
-              'brand-bg-dark': '#020617',
-              'brand-text-dark': '#e2e8f0',
-              'brand-primary-dark-mode': '#d4af37', 
+              'brand-text-dark': '#e5e5e5',
+              'brand-primary-dark-mode': '#C4A454', 
             },
             animation: {
-              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
-              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'fade-in': 'fadeIn 1s ease-out forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
               fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
               },
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
               }
-            }
+            },
+            boxShadow: {
+              'glow-gold-light': '0 0 30px 0 rgba(196, 164, 84, 0.25)',
+              'glow-gold-dark': '0 0 40px 0 rgba(196, 164, 84, 0.35)',
+            },
           }
         }
       }
@@ -75,11 +80,45 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #d4d4d8;
     border-radius: 4px;
   }
   .dark ::-webkit-scrollbar-thumb {
     background: #334155;
+  }
+  
+  /* Glassmorphism Utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .dark .glass {
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card {
+    background: rgba(249, 248, 246, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(196, 164, 84, 0.1);
+  }
+  .dark .glass-card {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  .glow-card {
+    border: 1px solid rgba(196, 164, 84, 0.15);
+    transition: all 0.3s ease-in-out;
+  }
+  .glow-card:hover {
+    border-color: rgba(196, 164, 84, 0.6);
+    box-shadow: 0 0 25px rgba(196, 164, 84, 0.2);
   }
 </style>
 </head>

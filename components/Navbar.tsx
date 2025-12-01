@@ -1,20 +1,23 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [hidden, setHidden] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    setIsScrolled(latest > 50);
+  });
 
   const navLinks = [
     { name: 'Highlights', href: '#highlights' },
@@ -27,20 +30,23 @@ const Navbar: React.FC = () => {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        variants={{
+            visible: { y: 0 },
+            hidden: { y: "-100%" },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
           isScrolled 
-            ? 'bg-white/90 dark:bg-brand-darker/90 backdrop-blur-md shadow-lg py-3' 
-            : 'bg-transparent py-6'
+            ? 'bg-white/90 dark:bg-brand-darker/90 backdrop-blur-md shadow-lg py-3 border-gray-200 dark:border-white/5' 
+            : 'bg-black/50 backdrop-blur-md py-4 border-white/10'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 group">
-              <span className={`font-serif text-2xl font-bold tracking-tighter ${
+              <span className={`font-serif text-2xl font-bold tracking-tighter transition-colors ${
                 isScrolled ? 'text-brand-dark dark:text-white' : 'text-white'
               }`}>
                 The Urban Oasis
@@ -62,7 +68,7 @@ const Navbar: React.FC = () => {
                 </a>
               ))}
               
-              <div className={`h-6 w-[1px] ${isScrolled ? 'bg-gray-200 dark:bg-gray-700' : 'bg-white/20'}`}></div>
+              <div className={`h-6 w-[1px] transition-colors ${isScrolled ? 'bg-gray-200 dark:bg-gray-700' : 'bg-white/20'}`}></div>
               
               <ThemeToggle className={isScrolled ? '' : 'text-white hover:bg-white/10'} />
 
@@ -83,7 +89,7 @@ const Navbar: React.FC = () => {
                <ThemeToggle className={isScrolled ? '' : 'text-white hover:bg-white/10'} />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 rounded-lg ${
+                className={`p-2 rounded-lg transition-colors ${
                   isScrolled ? 'text-brand-dark dark:text-white' : 'text-white'
                 }`}
               >

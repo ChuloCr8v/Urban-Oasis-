@@ -1,4 +1,3 @@
-
 import type { AmenityCategory, Highlight, Review, Attraction } from './types';
 import { Wifi, Tv, KeyRound, Car, Building2, Briefcase, UtensilsCrossed, Sofa, Refrigerator, BedDouble, Bath, ShieldCheck, Siren, Sparkles, Coffee, MapPin, Shirt, Wind, Music, MonitorPlay } from 'lucide-react';
 
@@ -25,14 +24,14 @@ export const HERO_IMAGES: string[] = [
 ];
 
 export const HIGHLIGHTS: Highlight[] = [
-  { title: "Blazing-Fast WiFi", icon: Wifi },
-  { title: "65\" 4K Smart TV", icon: Tv },
-  { title: "Self Check-In", icon: KeyRound },
-  { title: "Secure Parking", icon: Car },
-  { title: "City Views", icon: Building2 },
-  { title: "Workspace", icon: Briefcase },
-  { title: "Full Kitchen", icon: UtensilsCrossed },
-  { title: "Luxury Decor", icon: Sofa },
+  { title: "Blazing-Fast WiFi", icon: Wifi, image: "https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "65\" 4K Smart TV", icon: Tv, image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "Self Check-In", icon: KeyRound, image: "https://images.unsplash.com/photo-1582610116234-a3c17a54b200?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "Secure Parking", icon: Car, image: "https://images.unsplash.com/photo-1599933572289-53b7d1497a73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "City Views", icon: Building2, image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "Workspace", icon: Briefcase, image: "https://images.unsplash.com/photo-1497032628192-86f99079de7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "Full Kitchen", icon: UtensilsCrossed, image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
+  { title: "Luxury Decor", icon: Sofa, image: "https://images.unsplash.com/photo-1618221195710-dd6b41fa2247?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
 ];
 
 export const GALLERY_IMAGES: string[] = [
@@ -50,7 +49,10 @@ export const AMENITIES: AmenityCategory[] = [
   {
     category: "Living & Entertainment",
     description: "A spacious, open-plan sanctuary designed for relaxation and social gatherings.",
-    image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1560185893-a55de8537e4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    ],
     items: [
       { 
         name: "Plush Sofa & Seating", 
@@ -77,7 +79,10 @@ export const AMENITIES: AmenityCategory[] = [
   {
     category: "Gourmet Kitchen",
     description: "Fully equipped culinary workspace for the aspiring chef.",
-    image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    ],
     items: [
       { 
         name: "Chef's Station", 
@@ -104,7 +109,10 @@ export const AMENITIES: AmenityCategory[] = [
   {
     category: "Rest & Recovery",
     description: "Tranquil bedrooms optimized for the deepest sleep experience.",
-    image: "https://images.unsplash.com/photo-1616594039964-40891a9046c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1616594039964-40891a9046c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    ],
     items: [
       { 
         name: "King Size Suites", 
@@ -131,7 +139,10 @@ export const AMENITIES: AmenityCategory[] = [
    {
     category: "Spa Bathroom",
     description: "Rejuvenate in bathrooms designed with relaxation in mind.",
-    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1598928636135-d146006a9206?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    ],
     items: [
       { 
         name: "Rainfall Shower", 
@@ -158,7 +169,10 @@ export const AMENITIES: AmenityCategory[] = [
   {
     category: "Convenience & Safety",
     description: "Thoughtful additions to make your stay effortless and secure.",
-    image: "https://images.unsplash.com/photo-1521783988139-89397d761dce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1521783988139-89397d761dce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1617104679265-693c049d5a32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+    ],
     items: [
       { 
         name: "In-Unit Laundry", 

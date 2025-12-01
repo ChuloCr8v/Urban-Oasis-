@@ -1,42 +1,30 @@
-
 import React from 'react';
 import { HIGHLIGHTS } from '../constants';
-import type { Highlight } from '../types';
-import { motion } from 'framer-motion';
-
-const HighlightItem: React.FC<{ item: Highlight; index: number }> = ({ item, index }) => {
-  const Icon = item.icon;
-  return (
-    <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.05 }}
-        className="flex flex-col items-center text-center gap-3"
-    >
-      <div className="p-3 rounded-full bg-brand-secondary dark:bg-gray-800 text-brand-dark dark:text-brand-gold transition-transform duration-300">
-        <Icon className="w-6 h-6" />
-      </div>
-      <span className="font-semibold text-sm text-brand-dark dark:text-gray-200">{item.title}</span>
-    </motion.div>
-  );
-};
+import Marquee from 'react-fast-marquee';
 
 const Highlights: React.FC = () => {
   return (
-    <section id="highlights" className="relative z-40 -mt-24 px-4 scroll-mt-24">
-      <motion.div 
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 p-8 md:p-12"
-      >
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8">
-            {HIGHLIGHTS.map((item, index) => (
-            <HighlightItem key={index} item={item} index={index} />
-            ))}
-        </div>
-      </motion.div>
+    <section id="highlights" className="relative z-10 py-8 bg-brand-bg dark:bg-brand-bg-dark border-b border-brand-gold/10">
+      <div className="w-full overflow-hidden">
+        <Marquee gradient={false} speed={40} pauseOnHover>
+          {HIGHLIGHTS.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <div 
+                key={index} 
+                className="flex items-center gap-3 px-8 py-3 mx-3 bg-white/50 dark:bg-white/5 rounded-full border border-brand-gold/20 backdrop-blur-sm group hover:border-brand-gold/50 transition-colors"
+              >
+                <div className="text-brand-gold group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <span className="font-semibold text-brand-dark dark:text-gray-200 tracking-wide text-sm whitespace-nowrap">
+                  {item.title}
+                </span>
+              </div>
+            );
+          })}
+        </Marquee>
+      </div>
     </section>
   );
 };

@@ -1,4 +1,3 @@
-
 // FIX: Import `ElementType` to resolve 'Cannot find namespace React' error.
 import type { ElementType } from 'react';
 
@@ -12,12 +11,13 @@ export interface AmenityCategory {
   category: string;
   description: string;
   items: Amenity[];
-  image: string;
+  images: string[];
 }
 
 export interface Highlight {
   title: string;
   icon: ElementType;
+  image: string;
 }
 
 export interface Review {
